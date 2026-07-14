@@ -3,8 +3,9 @@ import streamlit.components.v1 as components
 
 st.set_page_config(page_title="Ashutosh Dubey | Portfolio", layout="wide")
 
-# Maine aapka poora premium HTML aur dynamic code is string me wrap kar diya hai
-html_content = """
+resume_link = "https://ibb.co/TMsJmcjq"
+
+html_content = f"""
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,23 +17,17 @@ html_content = """
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #0b0b0b; color: white; scroll-behavior: smooth; }
-        .mono { font-family: 'JetBrains Mono', monospace; }
-        .glass-sidebar { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px); border-radius: 30px; }
-        .section-tag { border: 1px solid #555; padding: 6px 16px; border-radius: 30px; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #fff; display: inline-flex; align-items: center; gap: 8px; margin-bottom: 40px; }
-        .neon-text { color: #28e98c; }
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: #0b0b0b; }
-        ::-webkit-scrollbar-thumb { background: #28e98c; border-radius: 10px; }
-        .project-card:hover, .resume-card:hover { border-color: #28e98c; transform: translateY(-5px); transition: all 0.3s ease; }
-        .modal { display: none; position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); align-items: center; justify-content: center; padding: 20px; }
-        .modal.active { display: flex; }
-        @media print {
-            body * { visibility: hidden; }
-            #resume-print-area, #resume-print-area * { visibility: visible; }
-            #resume-print-area { position: absolute; left: 0; top: 0; width: 100%; color: black !important; background: white !important; padding: 30px !important; }
-            .no-print { display: none !important; }
-        }
+        body {{ font-family: 'Inter', sans-serif; background-color: #0b0b0b; color: white; scroll-behavior: smooth; }}
+        .mono {{ font-family: 'JetBrains Mono', monospace; }}
+        .glass-sidebar {{ background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px); border-radius: 30px; }}
+        .section-tag {{ border: 1px solid #555; padding: 6px 16px; border-radius: 30px; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #fff; display: inline-flex; align-items: center; gap: 8px; margin-bottom: 40px; }}
+        .neon-text {{ color: #28e98c; }}
+        ::-webkit-scrollbar {{ width: 5px; }}
+        ::-webkit-scrollbar-track {{ background: #0b0b0b; }}
+        ::-webkit-scrollbar-thumb {{ background: #28e98c; border-radius: 10px; }}
+        .project-card:hover, .resume-card:hover {{ border-color: #28e98c; transform: translateY(-5px); transition: all 0.3s ease; }}
+        .modal {{ display: none; position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); align-items: center; justify-content: center; padding: 20px; }}
+        .modal.active {{ display: flex; }}
     </style>
 </head>
 <body class="p-4 lg:p-10">
@@ -52,9 +47,9 @@ html_content = """
             <a href="https://www.linkedin.com/in/ashutosh-dubey-11261140a" target="_blank" class="h-11 w-11 border border-white/10 rounded-full flex items-center justify-center hover:border-[#28e98c] hover:text-[#28e98c] transition duration-300" title="LinkedIn Profile"><i class="lab la-linkedin-in text-xl"></i></a>
             <a href="https://github.com/dubeyashutosh099-blip" target="_blank" class="h-11 w-11 border border-white/10 rounded-full flex items-center justify-center hover:border-[#28e98c] hover:text-[#28e98c] transition duration-300" title="GitHub Profile"><i class="lab la-github text-xl"></i></a>
         </div>
-        <button onclick="toggleModal(true)" class="mt-auto bg-[#28e98c] text-black py-4 rounded-full font-bold uppercase text-xs tracking-widest hover:scale-105 transition-all flex items-center justify-center gap-2 text-center">
-            <i class="las la-file-download text-base"></i> Download Resume
-        </button>
+        <a href="{resume_link}" target="_blank" class="mt-auto bg-[#28e98c] text-black py-4 rounded-full font-bold uppercase text-xs tracking-widest hover:scale-105 transition-all flex items-center justify-center gap-2 text-center select-none text-decoration-none">
+            <i class="las la-file-download text-base"></i> View / Download Resume
+        </a>
     </aside>
     <main class="lg:ml-[380px] pt-10 pb-20">
         <section id="home" class="min-h-screen flex flex-col justify-center" data-aos="fade-up">
@@ -98,6 +93,11 @@ html_content = """
                     <p class="text-gray-400 max-w-2xl text-sm leading-relaxed">Mastered full-stack calculations, data cleansing pipelines via Pandas/Matplotlib, and comprehensive dashboard reporting utilizing custom Pivot Tables and complex validation arrays.</p>
                 </div>
             </div>
+            <div class="mt-10 lg:hidden">
+                 <a href="{resume_link}" target="_blank" class="w-full max-w-xs bg-[#28e98c] text-black py-4 rounded-full font-bold uppercase text-xs tracking-widest hover:scale-105 transition-all flex items-center justify-center gap-2 text-center text-decoration-none">
+                    <i class="las la-file-download text-base"></i> View / Download Resume
+                </a>
+            </div>
         </section>
         <section id="projects" class="py-32" data-aos="fade-up">
             <div class="section-tag"><i class="las la-grip-vertical"></i> Portfolio</div>
@@ -113,36 +113,12 @@ html_content = """
             </div>
         </section>
     </main>
-    <div id="resume-modal" class="modal">
-        <div class="bg-white text-black w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-3xl p-6 lg:p-10 relative shadow-2xl">
-            <div class="flex justify-end gap-3 mb-6 no-print">
-                <button onclick="window.print()" class="bg-[#28e98c] text-black px-5 py-2 rounded-full font-bold text-xs uppercase tracking-wider hover:bg-black hover:text-white transition"><i class="las la-print mr-1"></i> Save As PDF / Print</button>
-                <button onclick="toggleModal(false)" class="bg-gray-200 text-black px-5 py-2 rounded-full font-bold text-xs uppercase tracking-wider hover:bg-red-500 hover:text-white transition">Close</button>
-            </div>
-            <div id="resume-print-area" class="bg-white text-black p-2">
-                <div class="border-b-2 border-gray-300 pb-4 mb-6">
-                    <h2 class="text-3xl font-bold text-gray-900">Ashutosh Dubey</h2>
-                    <p class="text-sm text-gray-600 mt-1">dubeyashutosh099@gmail.com | +91 9616902061 | Allahabad, India</p>
-                </div>
-                <div class="mb-6">
-                    <h4 class="text-sm font-bold uppercase tracking-wide text-blue-600 mb-2">Career Objective</h4>
-                    <p class="text-sm text-gray-700 leading-relaxed">BCA student with a strong foundation in Data Analysis, SQL, and Python. Passionate about transforming raw data into actionable insights through visualization tools like Power BI and Excel.</p>
-                </div>
-            </div>
-        </div>
-    </div>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: false });
-        function toggleModal(open) {
-            const modal = document.getElementById('resume-modal');
-            if(open) { modal.classList.add('active'); document.body.style.overflow = 'hidden'; }
-            else { modal.classList.remove('active'); document.body.style.overflow = 'auto'; }
-        }
+        AOS.init({{ duration: 1000, once: false }});
     </script>
 </body>
 </html>
 """
 
-# Streamlit ke andar HTML component load karna
 components.html(html_content, height=1000, scrolling=True)
